@@ -10,6 +10,5 @@ web.zip
 #data/cache
 #data/upload
 #所有的数据不提交
-*.json
 .tags
 test/*
