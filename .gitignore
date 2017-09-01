@@ -1,0 +1,15 @@
+#忽略.DS_Store目录下的所有文件
+.DS_Store
+#忽略node_modules目录下的所有文件
+node_modules
+npm-debug.log
+config.php
+web.zip
+#data/config
+#data/session
+#data/cache
+#data/upload
+#所有的数据不提交
+*.json
+.tags
+test/*
