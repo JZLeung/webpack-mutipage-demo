@@ -25,3 +25,5 @@ $ npm install
 
 1 directory, 8 files
 ```
+
+webpack详细配置，请移步至：[webpack 简易配置入门教程](https://github.com/JZLeung/blog/issues/12)
