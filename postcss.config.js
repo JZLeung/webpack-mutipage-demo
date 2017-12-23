@@ -6,10 +6,9 @@ module.exports = {
         // }),
         // 处理css前缀
         require('autoprefixer')({
-            browserslist: [
+            browsers: [
                 "> 1%",
                 "last 2 versions",
-                "Edge",
                 "ie >= 9"
             ]
         }),
@@ -18,6 +17,7 @@ module.exports = {
         // 处理css中rgba颜色代码
         require('postcss-color-rgba-fallback'),
         // 处理css中opacity的IE兼容性。
-        require('postcss-opacity')
+        require('postcss-opacity'),
+        require('cssnano')
     ]
 }

@@ -12,3 +12,5 @@ web.zip
 #所有的数据不提交
 .tags
 test/*
+
+dist

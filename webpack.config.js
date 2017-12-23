@@ -6,7 +6,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var entry = require('./config/webpack.entry.js')
 var plugins = require('./config/webpack.plugins.js')
-
+const assetsPath = function (_path) {
+    var assetsSubDirectory = './src'
+    return path.posix.join(assetsSubDirectory, _path)
+  }
 var webpackConfig = {
     entry,
     // entry: './src/js/index.js',
@@ -70,10 +73,14 @@ var webpackConfig = {
             // 处理字体文件
             test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'file-loader?name=./fonts/[name].[ext]'
-        }, {
-            // 处理图片，并将8k以下的图片转为base64编码
-            test: /\.(png|jpg|gif)$/,
-            loader: 'url-loader?limit=8192&name=./img/[hash].[ext]'
+        }, 
+        {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: 'img/[name].[hash:7].[ext]'
+            }
         }]
     },
     plugins,

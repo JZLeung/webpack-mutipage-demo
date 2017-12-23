@@ -18,13 +18,18 @@ var plugins = [
         name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
         // minChunks: 3 // 提取至少3个模块共有的部分
     }),
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    }),
     // 提取公共css样式
-    new ExtractTextPlugin('./css/[name].css'),
+    new ExtractTextPlugin('css/[name].css'),
 ]
 let dir_root = path.resolve(__dirname, '../src/view');
-var pugFiles = utils.getAllFiles(dir_root, 'pug')
+var pugFiles = utils.getAllFiles(dir_root, 'html')
 
-pugFiles = utils.getEntry(pugFiles, ['.pug', dir_root+'/'])
+pugFiles = utils.getEntry(pugFiles, ['.html', dir_root+'/'])
 // console.log(pugFiles);
 // { about: '/Users/lynnleung/work/webpack-demo/src/view/about.pug',
 //   index: '/Users/lynnleung/work/webpack-demo/src/view/index.pug',
@@ -33,7 +38,7 @@ pugFiles = utils.getEntry(pugFiles, ['.pug', dir_root+'/'])
 for (var key in pugFiles) {
     if (pugFiles.hasOwnProperty(key)) {
         let opt = {
-            filename: './view/'+ key +'.html',
+            filename: './'+ key +'.html',
             template: pugFiles[key],
             hash: true,
             minify: { //压缩HTML文件
