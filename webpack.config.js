@@ -87,6 +87,8 @@ var webpackConfig = {
     // 设置开发服务器
     devServer: {
         contentBase: path.join(__dirname, "dist/"),
+        historyApiFallback:true,
+        hot: true,
         host: 'localhost',
         port: 9090,
         inline: true
